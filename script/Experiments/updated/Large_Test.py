@@ -41,12 +41,17 @@ from auto_LiRPA import BoundedModule, BoundedTensor, PerturbationLpNorm
 from vnnlib.compat import read_vnnlib_simple
 from collections import OrderedDict
 
+import multiprocessing
+
+multiprocessing.set_start_method('spawn')
+
+import sysconfig
+print(sysconfig.get_config_vars())
 
 # In[3]:
 
-
+"""
 e = grp.Env(empty=True)
-
 wlsaccessID = os.getenv('GRB_WLSACCESSID','undefined')
 e.setParam('WLSACCESSID', wlsaccessID)
 
@@ -54,6 +59,21 @@ licenseID = os.getenv('GRB_LICENSEID', '0')
 e.setParam('LICENSEID', int(licenseID))
 
 wlsSecrets = os.getenv('GRB_WLSSECRET','undefined')
+e.setParam('WLSSECRET', wlsSecrets)
+
+e.setParam('CSCLIENTLOG', int(3))
+
+e.start()
+"""
+
+e = grp.Env(empty=True)
+wlsaccessID = "092f1f14-ea7e-4964-b5b9-7209c1983274"
+e.setParam('WLSACCESSID', wlsaccessID)
+
+licenseID = "2545668"
+e.setParam('LICENSEID', int(licenseID))
+
+wlsSecrets = "f7545864-0899-4298-81ed-5a16ae463d2e"
 e.setParam('WLSSECRET', wlsSecrets)
 
 e.setParam('CSCLIENTLOG', int(3))
