@@ -41,10 +41,6 @@ from auto_LiRPA import BoundedModule, BoundedTensor, PerturbationLpNorm
 from vnnlib.compat import read_vnnlib_simple
 from collections import OrderedDict
 
-import multiprocessing
-
-multiprocessing.set_start_method('spawn')
-
 import sysconfig
 print(sysconfig.get_config_vars())
 
